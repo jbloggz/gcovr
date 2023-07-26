@@ -210,6 +210,13 @@ class HtmlHandler(BaseHandler):
                 default=None,
             ),
             GcovrConfigOption(
+                "html_hide_single_counts",
+                ["--html-hide-single-counts"],
+                group="output_options",
+                help="Don't show line and branch counts is it is 1",
+                action="store_true",
+            ),
+            GcovrConfigOption(
                 "html_tab_size",
                 ["--html-tab-size"],
                 group="output_options",

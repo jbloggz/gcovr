@@ -23,7 +23,11 @@
         <div class="linebranchContents">
           {% for branch in row.linebranch.branches %}
           {% if branch.taken %}
+          {% if branch.count == 1 and HIDE_SINGLE_COUNTS %}
+          <div class="takenBranch">&check; Branch {{branch.name}} taken.</div>
+          {% else %}
           <div class="takenBranch">&check; Branch {{branch.name}} taken {{branch.count}} times.</div>
+          {% endif%}
           {% else %}
           <div class="notTakenBranch">&cross; Branch {{branch.name}} not taken.</div>
           {% endif%}
@@ -70,7 +74,7 @@
         {% endif %}
       </td>
       {% endif %}
-      <td class="linecount {{row.covclass}}">{% if ( row.covclass == 'uncoveredLine' ) %}&cross;{% elif ( row.covclass == 'excludedLine' ) %}&minus;{% else %}{{row.linecount}}{% endif %}</td>
+      <td class="linecount {{row.covclass}}">{% if ( row.covclass == 'uncoveredLine' ) %}&cross;{% elif ( row.covclass == 'excludedLine' ) %}&minus;{% elif ( row.linecount == 1 and HIDE_SINGLE_COUNTS ) %}{% else %}{{row.linecount}}{% endif %}</td>
       <td class="src {{row.covclass}}">{{row.source}}</td>
     </tr>
     {% endfor %}

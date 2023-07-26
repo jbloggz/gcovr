@@ -337,6 +337,7 @@ def write_report(covdata: CovData, output_file: str, options: Options) -> None:
     high_threshold_branch = options.html_high_threshold_branch
     exclude_calls = options.exclude_calls
     show_decision = options.show_decision
+    hide_single_counts = options.html_hide_single_counts
 
     data = {}
     root_info = RootInfo(options)
@@ -350,6 +351,7 @@ def write_report(covdata: CovData, output_file: str, options: Options) -> None:
     data["LINE_COVERAGE_HIGH"] = high_threshold_line
     data["BRANCH_COVERAGE_MED"] = medium_threshold_branch
     data["BRANCH_COVERAGE_HIGH"] = high_threshold_branch
+    data["HIDE_SINGLE_COUNTS"] = hide_single_counts
 
     self_contained = options.html_self_contained
     if self_contained is None:
